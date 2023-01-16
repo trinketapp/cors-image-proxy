@@ -2,5 +2,7 @@
   "headers": {
     "Content-Type": "application/json"
   },
-  "body": "{\"name\": \"Frederic\"}"
+  "queryStringParameters": {
+    "url": "https://trinket-user-assets.trinket.io/02b81dd84f5006e360288e728d69cdd60aeec160-552d25d3d1570f876e1cb766.png"
+  }
 }

@@ -5,19 +5,28 @@ import axios from 'axios';
 export const main = async (event: APIGatewayEvent) => {
     const queryString = event.queryStringParameters;
     try {
-        const image = await fetchImage(queryString.url);
-        const type = imageType(image);
+        const result = await fetchImage(queryString.url);
+        const type = imageType(result[1]);
 
-        return {
+        if (type) {
+          return {
             statusCode: 200,
             headers: {
-                'Content-Type': type.mime,
-                'Access-Control-Allow-Methods': '*',
-                'Access-Control-Allow-Origin': '*',
+              'Content-Type': type.mime,
+              'Access-Control-Allow-Methods': '*',
+              'Access-Control-Allow-Origin': '*',
             },
-            body: image.toString('base64'),
+            body: result[1].toString('base64'),
             isBase64Encoded: true,
-        };
+          };
+        }
+        else {
+          return {
+            statusCode: 200,
+            headers: result[0],
+            body: result[1].toString(),
+          };
+        }
     } catch (error) {
         console.error(error);
         return {
@@ -30,5 +39,5 @@ export const main = async (event: APIGatewayEvent) => {
 const fetchImage = (imageURL: string) => {
     return axios
         .get(imageURL, { responseType: 'arraybuffer' })
-        .then(response => Buffer.from(response.data, 'base64'));
+        .then(response => [response.headers, Buffer.from(response.data, 'base64')]);
 };

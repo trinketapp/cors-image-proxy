@@ -12,7 +12,7 @@
   "dependencies": {
     "@middy/core": "^1.5.2",
     "@middy/http-json-body-parser": "^1.5.2",
-    "axios": "^0.21.1",
+    "axios": "^0.21.4",
     "image-type": "^4.1.0",
     "source-map-support": "^0.5.19"
   },
@@ -21,7 +21,7 @@
     "@types/aws-lambda": "^8.10.71",
     "@types/node": "^14.14.25",
     "json-schema-to-ts": "^1.5.0",
-    "serverless": "^2.23.0",
+    "serverless": "^2.72.3",
     "serverless-webpack": "^5.3.5",
     "ts-loader": "^8.0.15",
     "ts-node": "^9.1.1",

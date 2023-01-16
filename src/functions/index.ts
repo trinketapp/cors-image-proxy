@@ -1,1 +1,1 @@
-export { default as hello } from './corsProxy';
+export { default as corsProxy } from './corsProxy';
